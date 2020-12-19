@@ -124,7 +124,7 @@
 
             $('#date-input').change(function() {
                 var date = $(this).val();
-                let url = 'http://localhost:8000/tutor/'+username+'/timeslot/'+date;
+                let url = 'http://awstest01-env.eba-d6463s97.us-east-1.elasticbeanstalk.com/tutor/'+username+'/timeslot/'+date;
                 // alert(url);
                 fetch(url).then((response) => response.json())
                           .then( function(data){
