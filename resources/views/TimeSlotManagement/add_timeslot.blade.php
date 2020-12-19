@@ -124,7 +124,7 @@
 
             $('#date-input').change(function() {
                 var date = $(this).val();
-                var host = window.location.host;
+                var host = window.location.origin;
                 //let url = 'http://awstest01-env.eba-d6463s97.us-east-1.elasticbeanstalk.com/tutor/'+username+'/timeslot/'+date;
                 let url = host+'/tutor/'+username+'/timeslot/'+date;
                 // alert(url);
