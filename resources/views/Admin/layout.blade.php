@@ -34,7 +34,7 @@
 
       .sidebar{
         z-index: 1;
-        background: #87888c;
+        background: #aedbcc;
         position: fixed;
         margin-top: 0px;
         width: 250px;
