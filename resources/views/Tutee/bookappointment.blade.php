@@ -91,11 +91,13 @@
         $(document).ready(function(){
 
             var username = '{!! $username !!}';
+            var host = window.location.origin;
 
             $("a[name='tutor-link']").click(function() {
                 let email = $(this).attr('tutorEmail');
                 // alert("Tutor link "+email);
-                let url = 'http://localhost:8000/tutor/'+email+'/courses';
+                // let url = 'http://localhost:8000/tutor/'+email+'/courses';
+                let url = host+'/tutor/'+email+'/courses';
                 fetch(url).then((response) => response.json())
                         .then(function(data){
                             console.log(data);
@@ -116,7 +118,9 @@
             $("input[name='date-input']").change(function(){
                 let date = $(this).val();
                 let email = $(this).attr('tutorEmail');
-                let url = 'http://localhost:8000/tutor/'+email+'/availabletimeslot/'+date;
+                // let host = window.location.origin;
+                // let url = 'http://localhost:8000/tutor/'+email+'/availabletimeslot/'+date;
+                let url = host+'/tutor/'+email+'/availabletimeslot/'+date;
                 // alert("data is "+date+" email: "+email);
                 fetch(url).then((response) => response.json())
                         .then(function(data){
