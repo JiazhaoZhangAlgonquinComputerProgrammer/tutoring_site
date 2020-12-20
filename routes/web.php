@@ -26,7 +26,7 @@ Route::get('/', function () {
 });
 
 Route::get('/hello', function () {
-    return "Hello!!!!!!";
+    return "Hello?????";
 });
 
 // Route::get('/sendEmail',function(){
