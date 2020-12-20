@@ -25,6 +25,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/hello', function () {
+    return "Hello World";
+});
+
 // Route::get('/sendEmail',function(){
 
 //     $returnValue = Mail::to('zhan0599@algonquinlive.com')->send(new AppointmentMail(['helloWorld']));
