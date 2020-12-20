@@ -43,7 +43,7 @@
                     id="profileDropdown" role="button" data-toggle="dropdown">REGISTERATION</a>
                     <div class="dropdown-menu" aria-labelledby="profileDropdown" >
                         <a href="#" class="dropdown-item">REGISTER TO BE A TUTOR</a>
-                        <a href="#" class="dropdown-item">REGISTER TO BE A TUTEE</a>
+                        <a href="/tutee" class="dropdown-item">REGISTER TO BE A TUTEE</a>
                     </div>
                 </div>
             </div>
