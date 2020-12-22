@@ -21,13 +21,15 @@ use Illuminate\Support\Facades\Mail;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
-Route::get('/hello', function () {
-    return "Hello?????";
-});
+Route::get('/', "TuteeController@login");
+
+// Route::get('/hello', function () {
+//     return "Hello?????";
+// });
 
 // Route::get('/sendEmail',function(){
 

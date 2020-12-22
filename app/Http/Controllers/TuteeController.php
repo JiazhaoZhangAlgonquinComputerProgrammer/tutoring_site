@@ -124,7 +124,7 @@ class TuteeController extends Controller
         if($request->session()->has('tutee_username') &&  $request->session()->has('tutee_email')){
             $username = $request->session()->get('tutee_username');
             $email = $request->session()->get('tutee_email');
-            if($request->input("searchTutor")){
+            if($request->input("searchTutor") && $request->isMethod('post')){
                 $searchTutor = $request->input("searchTutor");
                 //TODO : Finish code for finding a tutor by name
                 $tutors = DB::table('tutors')
@@ -138,7 +138,28 @@ class TuteeController extends Controller
                             ['username'=>$username,
                             'email'=>$email,
                             'tutors'=>$tutors]);
-            }else{
+            }
+            else if($request->input("searchCourse") && $request->isMethod('post')){
+                // echo "Course to search : ".$request->input("searchCourse");
+                $searchCourse = $request->input("searchCourse");
+                $courses = DB::table('tutoringcourses')
+                        ->join('tutors','tutoringcourses.owner_id','=','tutors.id')
+                        ->select('tutoringcourses.course_name','tutoringcourses.description', 'tutoringcourses.price','tutors.firstname','tutors.lastname')
+                        ->where('tutoringcourses.course_name','like','%'.$searchCourse.'%')
+                        ->orWhere('tutoringcourses.description','like','%'.$searchCourse.'%')
+                        // ->orWhere('tutors.username','like','%'.$searchTutor.'%')
+                        ->get();
+                dd($courses);
+
+            }
+            else if($request->isMethod('get') && $request->query('searchBy') == 'course'){
+                // echo "search by ".$request->query('searchBy');
+                return view("Tutee.bookappointment",
+                            ['username'=>$username,
+                            'email'=>$email,
+                            'searchBy'=> $request->query('searchBy')]);
+            }
+            else{
                 return view("Tutee.bookappointment", ['username'=>$username, 'email'=>$email]);
             }
 

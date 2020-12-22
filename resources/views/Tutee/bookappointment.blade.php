@@ -1,10 +1,43 @@
 @extends('Layouts.tutee_dashboard_layout')
+@push('otherStyle')
+<style type="text/css">
+  .toggle-search{
+      text-decoration: none;
+      color: #4c17c2;
+  }
 
+  .toggle-search:hover{
+      text-decoration: none;
+  }
+</style>
+@endpush
 @section('content')
     <div class="container">
+        @if (isset($searchBy) && $searchBy == 'course')
+        <div class="row">
+            <div class='col-md-8'>
+                <h4><a class="toggle-search" href="/tutee/bookappointment">Search for a tutor</a> / Search for a course</h4>
+            </div>
+       </div><br>
        <div class="row">
-            <div class='col-md-3'>
-                <h4>Find a tutor</h4>
+            <div class="col-md-6">
+                <form action="/tutee/bookappointment" method="POST">
+                    @csrf
+                <div class="input-group">
+                    <input type="text" class="form-control" name="searchCourse" placeholder="Search for a course" required>
+                    <div class="input-group-append">
+                        <button class="btn btn-secondary" type="submit">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+                </form>
+            </div>
+       </div>
+        @else
+        <div class="row">
+            <div class='col-md-8'>
+                <h4>Search for a tutor / <a class="toggle-search" href="/tutee/bookappointment?searchBy=course">Search for a course</a></h4>
             </div>
        </div><br>
        <div class="row">
@@ -22,6 +55,8 @@
                 </form>
             </div>
        </div>
+        @endif
+
        @if (isset($tutors))
         <div class="row">
            @if (count($tutors)>0)
@@ -69,13 +104,17 @@
 
                 </div>
             </div>
+            @else
+            {{-- <p style="color: red"> Sorry, we could not find any records about this tutor</p> --}}
+
+                <div class="col-8">
+                    <div class="alert alert-danger">
+                        Sorry, we could not find any records about this tutor
+                    </div>
+                </div>
+            @endif
         </div>
-           @else
-                {{-- <p style="color: red"> Sorry, we could not find any records about this tutor</p> --}}
-                <div class="alert alert-danger">
-                    Sorry, we could not find any records about this tutor
-                 </div>
-           @endif
+
        @endif
        @if (session('error_message'))
             {{-- <p class="validation-error">Error : {{session('error_message')}}</p> --}}
