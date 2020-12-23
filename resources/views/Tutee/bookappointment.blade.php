@@ -13,6 +13,7 @@
 @endpush
 @section('content')
     <div class="container">
+        <!-- Start of section of searching by course-->
         @if (isset($searchBy) && $searchBy == 'course')
         <div class="row">
             <div class='col-md-8'>
@@ -34,7 +35,9 @@
                 </form>
             </div>
        </div>
+       <!-- end of section of searching by course-->
         @else
+        <!-- Start of section of searching by tutor-->
         <div class="row">
             <div class='col-md-8'>
                 <h4>Search for a tutor / <a class="toggle-search" href="/tutee/bookappointment?searchBy=course">Search for a course</a></h4>
@@ -55,8 +58,10 @@
                 </form>
             </div>
        </div>
+       <!-- end of section of searching by course-->
         @endif
 
+    <!-- search result of tutors -->
        @if (isset($tutors))
         <div class="row">
            @if (count($tutors)>0)
@@ -114,8 +119,71 @@
                 </div>
             @endif
         </div>
-
        @endif
+    <!-- end of search result of tutors -->
+    <br>
+    <!-- search result of courses -->
+    @if (isset($courses))
+        @if(count($courses)>0)
+            {{-- {{var_dump($courses)}} --}}
+            <div class="row">
+                <div class="col-md-2">
+                    Course name
+                </div>
+                <div class="col-md-3">
+                    Course description
+                </div>
+                <div class="col-md-2">
+                    Course Price
+                </div>
+                <div class="col-md-2">
+                    Tutor name
+                </div>
+            </div>
+            <hr>
+            @foreach ($courses as $course)
+            <div class="row">
+                <div class="col-md-2">
+                    {{$course->course_name}}
+                </div>
+                <div class="col-md-3">
+                    {{$course->description}}
+                </div>
+                <div class="col-md-2">
+                    ${{$course->price}} / hour
+                </div>
+                <div class="col-md-2">
+                    {{$course->lastname}}, {{$course->firstname}}
+                </div>
+            </div>
+            @endforeach
+            <hr>
+            <div class="row">
+                @if ($page>1)
+                <div class="col-md-1">
+                    <a href="/tutee/bookappointment?page={{$page<=1?1:$page-1}}&&moveTo=prev&&searchCourse={{$searchCourse}}" class="btn btn-primary">Previous</a>
+                </div>
+                @endif
+                @if ($more)
+                <div class="col-md-1">
+                    <a href="/tutee/bookappointment?page={{$page+1}}&&moveTo=next&&searchCourse={{$searchCourse}}" class="btn btn-primary">Next</a>
+                </div>
+                @endif
+
+            </div>
+        @else
+            <div class="row">
+                <div class="col-md-8">
+                    <span class=" alert alert-danger">No record of this course found</span>
+                </div>
+
+            </div>
+        @endif
+
+
+    @endif
+    <!-- end of search result of tutors -->
+
        @if (session('error_message'))
             {{-- <p class="validation-error">Error : {{session('error_message')}}</p> --}}
             <div class="alert alert-danger">

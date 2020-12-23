@@ -137,19 +137,76 @@ class TuteeController extends Controller
                 return view("Tutee.bookappointment",
                             ['username'=>$username,
                             'email'=>$email,
-                            'tutors'=>$tutors]);
+                            'tutors'=>$tutors,
+                            'searchBy'=>'tutor']);
             }
-            else if($request->input("searchCourse") && $request->isMethod('post')){
+            else if
+            (($request->input("searchCourse") && $request->isMethod('post')) ||
+            ($request->isMethod('get') && !is_null($request->query('searchCourse')))){
                 // echo "Course to search : ".$request->input("searchCourse");
                 $searchCourse = $request->input("searchCourse");
-                $courses = DB::table('tutoringcourses')
+
+                if( !is_null($request->query('searchCourse')) ){
+                    $searchCourse = $request->query('searchCourse');
+                }
+
+                if( is_null($request->query('page')) && is_null($request->query('moveTo')) && is_null($request->query('searchCourse'))){
+                    $courses = DB::table('tutoringcourses')
                         ->join('tutors','tutoringcourses.owner_id','=','tutors.id')
                         ->select('tutoringcourses.course_name','tutoringcourses.description', 'tutoringcourses.price','tutors.firstname','tutors.lastname')
                         ->where('tutoringcourses.course_name','like','%'.$searchCourse.'%')
                         ->orWhere('tutoringcourses.description','like','%'.$searchCourse.'%')
+                        // ->offset(5)
+                        ->limit(6)
                         // ->orWhere('tutors.username','like','%'.$searchTutor.'%')
                         ->get();
-                dd($courses);
+                    $more = false;
+                    if(count($courses)>=6){
+                        $more = true;
+                    }
+                    return view("Tutee.bookappointment",
+                                    ['username'=>$username,
+                                    'email'=>$email,
+                                    'courses'=>$courses,
+                                    'page'=>1,
+                                    'searchCourse'=>$searchCourse,
+                                    'searchBy'=>'course',
+                                    'more'=>$more]);
+                }else if(!is_null($request->query('page')) && !is_null($request->query('moveTo')) ){
+                    $currentPage = 1;
+                    if($request->query('moveTo')=='next'){
+                        $currentPage = $request->query('page');
+                    } else if($request->query('moveTo')=='prev'){
+                        $currentPage = $request->query('page');
+                        if($currentPage<=0){
+                            $currentPage = 1;
+                        }
+                    }
+                    // echo $request->query('page')." ".$currentPage;
+                    $offset = 5*($currentPage-1);
+                    $courses = DB::table('tutoringcourses')
+                        ->join('tutors','tutoringcourses.owner_id','=','tutors.id')
+                        ->select('tutoringcourses.course_name','tutoringcourses.description', 'tutoringcourses.price','tutors.firstname','tutors.lastname')
+                        ->where('tutoringcourses.course_name','like','%'.$searchCourse.'%')
+                        ->orWhere('tutoringcourses.description','like','%'.$searchCourse.'%')
+                        ->offset($offset)
+                        ->limit(6)
+                        // ->orWhere('tutors.username','like','%'.$searchTutor.'%')
+                        ->get();
+                    $more = false;
+                    if(count($courses)>=6){
+                        $more = true;
+                    }
+                    return view("Tutee.bookappointment",
+                                    ['username'=>$username,
+                                    'email'=>$email,
+                                    'courses'=>$courses,
+                                    'page'=>$currentPage,
+                                    'searchCourse'=>$searchCourse,
+                                    'searchBy'=>'course',
+                                    'more'=>$more]);
+                }
+
 
             }
             else if($request->isMethod('get') && $request->query('searchBy') == 'course'){
