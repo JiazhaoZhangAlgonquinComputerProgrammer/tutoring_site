@@ -74,3 +74,6 @@ Route::get('/tutor/{email}/availabletimeslot/{date}', 'TimeSlotController@getTut
 Route::get('/tutor/{email}/courses', 'TutorController@getCourses');
 Route::get('/tutor/registration', "TutorController@registration");
 Route::post('/tutor/registerNewTutor', "TutorController@addNewTutor");
+Route::post('/tutor/updateAccountInfo', "TutorController@updateAccountInfo");
+
+Route::get('/forgetPassword', "PasswordResetController@resetPasswordPage");

@@ -5,6 +5,10 @@
     <title>Admin Pane</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css"
             integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous"/>
+            <link rel="stylesheet"
+                href="https://use.fontawesome.com/releases/v5.15.1/css/all.css"
+                integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp"
+                crossorigin="anonymous">
             @stack('otherStyle')
     <style type="text/css">
       .container span{
@@ -38,7 +42,7 @@
         position: fixed;
         margin-top: 0px;
         width: 250px;
-        height: 100%;
+        height: 100vh;
         transition: 0.3s;
         transition-property: width;
         overflow-y: auto;
@@ -46,22 +50,37 @@
       .sidebar-items{
         margin-top: 50px;
       }
+
+      .sidebar li{
+          list-style: none;
+          margin-top: 15px;
+          padding: 15px;
+          margin-right: 25px;
+          text-align: center;
+
+      }
+
+      .sidebar li:hover{
+        border-radius: 30px;
+        border: black solid 3px;
+        background-color: aquamarine;
+      }
+
       .sidebar a{
-        line-height: 60px;
-        padding-left: 40px;
-        display: block;
         text-decoration: none;
-        width:100%;
+        text-align: center;
+        width: 50px;
+        height: 20px;
         /* color:red; */
         color:#333942;
         box-sizing: border-box;
         transition: 0.5s;
       }
 
-      .sidebar a:hover{
+      /* .sidebar a:hover{
         background: #bec4cf;
         cursor:pointer;
-      }
+      } */
 
       .main{
         /* background: red; */
@@ -79,7 +98,7 @@
     </style>
   </head>
   <body>
-    <nav class="navbar navbar-dark bg-dark">
+    <nav class="navbar navbar-dark bg-dark sticky-top">
     <!-- Navbar content -->
       <div class="container">
         <span class="navbar-brand" >Administration Pane</span>
@@ -96,15 +115,16 @@
     <!-- Side bar -->
     <div class="sidebar">
       <div class="sidebar-item-wrapper">
-        <a href="#"><span>Edit New Posts</span></a>
-        <a href="/admin/dashboard/registerCourse"><span>Register a course</span></a>
-        <a href="/admin/dashboard/myCourses"><span>My Courses</span></a>
-        <a href="/admin/dashboard/postmyschedual"><span>Post my timeslots</span></a>
-        <a href="/admin/dashboard/displaymytimeslots"><span>View my timeslots</span></a>
-        {{-- <a href="/admin/dashboard/displaymyappointments"><span>View my appointments</span></a> --}}
+          <ul>
+            <li><a href="/admin/dashboard"><span><i class="fas fa-home"></i>&nbsp;Home</span></a></li>
+            <li><a href="/admin/dashboard/registerCourse"><span><i class="fas fa-book"></i>&nbsp;Register a course</span></a></li>
+            <li><a href="/admin/dashboard/myCourses"><span><i class="fas fa-chalkboard-teacher"></i>&nbsp;My Courses</span></a></li>
+            <li><a href="/admin/dashboard/postmyschedual"><span><i class="fas fa-clock"></i>&nbsp;Post my timeslots</span></a></li>
+            <li><a href="/admin/dashboard/displaymytimeslots"><span><i class="fas fa-calendar-alt"></i>&nbsp;View my timeslots</span></a></li>
+            {{-- <a href="/admin/dashboard/displaymyappointments"><span>View my appointments</span></a> --}}
+          </ul>
+
       </div>
-
-
     </div>
 
     <!-- main content -->

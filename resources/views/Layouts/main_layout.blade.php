@@ -18,10 +18,10 @@
                     aria-controls="navbarItems" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarItems">
-                <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarItems">
+                {{-- <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#">Features</a>
@@ -29,21 +29,21 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                   </li>
-                </ul>
-                <div class="navbar-nav dropdown customized-dropdown">
+                </ul> --}}
+                <div class="navbar-nav dropdown customized-dropdown ">
                         <a href="#" class="navbar-link dropdown-toggle dropdown-toggler customized-link"
                         id="profileDropdown" role="button" data-toggle="dropdown">LOG IN</a>
                         <div class="dropdown-menu" aria-labelledby="profileDropdown" >
-                            <a href="#" class="dropdown-item">LOG IN AS A TUTOR</a>
-                            <a href="#" class="dropdown-item">LOG IN AS A TUTEE</a>
+                            <a href="/admin" class="dropdown-item">LOG IN AS A TUTOR</a>
+                            <a href="/tutee/login" class="dropdown-item">LOG IN AS A TUTEE</a>
                         </div>
                     </div>
                 <div class="navbar-nav dropdown customized-dropdown">
                     <a class="navbar-link dropdown-toggle dropdown-toggler customized-link"
                     id="profileDropdown" role="button" data-toggle="dropdown">REGISTERATION</a>
                     <div class="dropdown-menu" aria-labelledby="profileDropdown" >
-                        <a href="#" class="dropdown-item">REGISTER TO BE A TUTOR</a>
-                        <a href="/tutee" class="dropdown-item">REGISTER TO BE A TUTEE</a>
+                        <a href="/tutor/registration" class="dropdown-item">REGISTER TO BE A TUTOR</a>
+                        <a href="/tutee/register" class="dropdown-item">REGISTER TO BE A TUTEE</a>
                     </div>
                 </div>
             </div>

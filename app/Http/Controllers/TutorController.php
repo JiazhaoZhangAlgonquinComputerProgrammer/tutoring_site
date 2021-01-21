@@ -87,4 +87,38 @@ class TutorController extends Controller
 
     }
 
+    public function updateAccountInfo(Request $request){
+        // var_dump($request->input('firstname'));
+
+        $newFirtname = $request->input('firstname');
+        $newLastname = $request->input('lastname');
+        $newSchool = $request->input('school');
+        $newCompany = $request->input('company');
+        $email = $request->session()->get('email');
+
+        if(trim($newFirtname)=='' || trim($newLastname)=='' || trim($newSchool)=='' || trim($newCompany)==''){
+            return back()->with('inValidInfo',"Please provide valid personal information");
+        }
+
+        // var_dump($newFirtname." ".$newLastname." ".$newSchool." ".$newCompany." ".$email);
+        $updateFields = [
+            'firstname' => $newFirtname,
+            'lastname' => $newLastname,
+            'school' => $newSchool,
+            'company' => $newCompany,
+        ];
+        $returnValue = Tutor::where('email', $email)->update($updateFields);
+        if($returnValue == 0){
+            echo "Failed to update information";
+            return back()->with('notUpdated',"Failed to update your information");
+        }else{
+            // echo "Update information successfully";
+            $request->session()->put('firstname', $newFirtname);
+            $request->session()->put('lastname', $newLastname);
+            $request->session()->put('school', $newSchool);
+            $request->session()->put('company', $newCompany);
+            return back()->with('isUpdated',"Your personal information has been renewed");
+        }
+    }
+
 }

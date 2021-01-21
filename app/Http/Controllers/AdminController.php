@@ -73,6 +73,10 @@ class AdminController extends Controller
         if($passwd==$expectedPass){
           $request->session()->put('username', $expectedName);
           $request->session()->put('email', $expectedEmail);
+          $request->session()->put('firstname', $tutor[0]->firstname);
+          $request->session()->put('lastname', $tutor[0]->lastname);
+          $request->session()->put('school', $tutor[0]->school);
+          $request->session()->put('company', $tutor[0]->company);
           return redirect('admin/dashboard');
         }else{
           return back()->with('error_message',"Invalid username or password");
