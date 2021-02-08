@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Support\Facades\Crypt;
+use Illuminate\Validation\Validator;
+use Symfony\Component\Console\Input\Input;
 
 class AdminController extends Controller
 {
@@ -45,6 +47,10 @@ class AdminController extends Controller
     }
 
     public function login(Request $request){
+
+        $this->validate($request,[
+            'g-recaptcha-response' => 'required|captcha'
+        ]);
         // return view('Admin.index');
 
         // dd($request->all()['username']);

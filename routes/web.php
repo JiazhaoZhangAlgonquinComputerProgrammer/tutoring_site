@@ -25,7 +25,9 @@ use Illuminate\Support\Facades\Mail;
 //     return view('welcome');
 // });
 
-Route::get('/', "TuteeController@login");
+Route::get('/', function(){
+    return view("welcome");
+});
 
 // Route::get('/hello', function () {
 //     return "Hello?????";
@@ -77,3 +79,4 @@ Route::post('/tutor/registerNewTutor', "TutorController@addNewTutor");
 Route::post('/tutor/updateAccountInfo', "TutorController@updateAccountInfo");
 
 Route::get('/forgetPassword', "PasswordResetController@resetPasswordPage");
+Route::post('/resetPassword', "PasswordResetController@resetPassword");

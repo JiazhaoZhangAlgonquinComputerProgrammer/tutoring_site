@@ -18,7 +18,7 @@
                     aria-controls="navbarItems" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse d-flex flex-row-reverse" id="navbarItems">
+            <div class="collapse navbar-collapse" id="navbarItems">
                 {{-- <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
                     <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -30,14 +30,14 @@
                     <a class="nav-link" href="#">Pricing</a>
                   </li>
                 </ul> --}}
-                <div class="navbar-nav dropdown customized-dropdown ">
+                <div class="navbar-nav dropdown customized-dropdown ml-auto">
                         <a href="#" class="navbar-link dropdown-toggle dropdown-toggler customized-link"
                         id="profileDropdown" role="button" data-toggle="dropdown">LOG IN</a>
                         <div class="dropdown-menu" aria-labelledby="profileDropdown" >
                             <a href="/admin" class="dropdown-item">LOG IN AS A TUTOR</a>
                             <a href="/tutee/login" class="dropdown-item">LOG IN AS A TUTEE</a>
                         </div>
-                    </div>
+                </div>
                 <div class="navbar-nav dropdown customized-dropdown">
                     <a class="navbar-link dropdown-toggle dropdown-toggler customized-link"
                     id="profileDropdown" role="button" data-toggle="dropdown">REGISTERATION</a>

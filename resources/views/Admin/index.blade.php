@@ -166,7 +166,20 @@
                 <input type="text" name="username" value="" placeholder="USERNAME/EMAIL" required>
                 <input type="password" name="passwd" value="" placeholder="PASSWORD" required>
                 <button class="loginBtn">Log in</button>
-                <button type="reset" class="resetBtn">Cancel</button>
+                <button type="reset" class="resetBtn">Cancel</button><br><br>
+                <div>
+                    <div>
+                        {!! NoCaptcha::renderJs() !!}
+                        {!! NoCaptcha::display() !!}
+                    </div>
+
+                    @if ($errors->has('g-recaptcha-response'))
+                        <p>
+                            <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                        </p>
+                    @endif
+
+                </div>
             </form><br>
             <p>Does not have an account ? Start registering to be a tutor <a href="/tutor/registration">here</a> !</p>
             <p>Forget password? Click <a href="/forgetPassword">here</a> !</p>
