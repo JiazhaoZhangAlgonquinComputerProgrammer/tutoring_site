@@ -1,0 +1,27 @@
+body{
+    background-image: linear-gradient(to bottom right, grey, white);
+    /* margin: 0 auto; */
+}
+
+.validation-error{
+    color: red;
+    text-align: center;
+}
+
+.customized-dropdown{
+    margin-left: 15px;
+}
+
+.customized-link{
+    text-decoration: none;
+    color: azure;
+}
+
+.customized-link:hover{
+    text-decoration: none;
+    color: #a5b7d4;
+}
+
+.dropdown-menu a{
+    color: #242f40;
+}
