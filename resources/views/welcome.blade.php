@@ -92,7 +92,7 @@
         <header id="header">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
-                    <a class="navbar-brand" href="#">Tutoring Site</a>
+                    <a class="navbar-brand" href="/">Tutoring Site</a>
                     {{-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -155,7 +155,7 @@
                             <img src="{{url('images/web-programming.jpg')}}" style="height:35vh;" class="card-img-top" alt="...">
                             <h4>Java && PHP</h4>
                             <div class="card-body">
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <p class="card-text">Web app development with Java, J2EE and PHP</p>
                             </div>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                             <img src="{{url('images/android.jpg')}}" style="height:35vh;" class="card-img-top" alt="...">
                             <h4>Android development (Java)</h4>
                             <div class="card-body">
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <p class="card-text">Android development or academic projects with Java and Android studio</p>
                             </div>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                             <img src="{{url('images/algorithm.jpg')}}" style="height:35vh;" class="card-img-top" alt="...">
                             <h4>Data structure and algorithm</h4>
                             <div class="card-body">
-                              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                              <p class="card-text">Tutoring in data struture and algorithm with Java, capable of help various leetcode problem from easy to medium</p>
                             </div>
                         </div>
                     </div>

@@ -76,7 +76,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarItems">
-                <ul class="navbar-nav mr-auto">
+                {{-- <ul class="navbar-nav mr-auto">
                   <li class="nav-item">
                     <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                   </li>
@@ -86,8 +86,8 @@
                   <li class="nav-item">
                     <a class="nav-link" href="#">Pricing</a>
                   </li>
-                </ul>
-                <div class="navbar-nav dropdown">
+                </ul> --}}
+                <div class="navbar-nav dropdown ml-auto">
                     <a href="#" class="navbar-link dropdown-toggle dropdown-toggler"
                         id="profileDropdown" role="button" data-toggle="dropdown">Welcome, {{$username}}</a>
                     <div class="dropdown-menu" aria-labelledby="profileDropdown" >

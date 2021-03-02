@@ -49,7 +49,7 @@
              <button class="res-btn" type="reset">Cancel</button><br>
 
              <p class="para">Dose not have an account? <a href="/tutee/register">Register here</a></p>
-             <p class="para">Forget password? Click <a href="#">Password reset</a></p>
+             <p class="para">Forget password? Click <a href="/forgetPassword">Password reset</a></p>
 
           </form>
     </div>

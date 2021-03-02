@@ -116,7 +116,7 @@
     <div class="sidebar">
       <div class="sidebar-item-wrapper">
           <ul>
-            <li><a href="/admin/dashboard"><span><i class="fas fa-home"></i>&nbsp;Home</span></a></li>
+            <li><a href="/admin/dashboard"><span><i class="fas fa-home"></i>&nbsp;Profile</span></a></li>
             <li><a href="/admin/dashboard/registerCourse"><span><i class="fas fa-book"></i>&nbsp;Register a course</span></a></li>
             <li><a href="/admin/dashboard/myCourses"><span><i class="fas fa-chalkboard-teacher"></i>&nbsp;My Courses</span></a></li>
             <li><a href="/admin/dashboard/postmyschedual"><span><i class="fas fa-clock"></i>&nbsp;Post my timeslots</span></a></li>
